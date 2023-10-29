@@ -47,9 +47,12 @@ function startTimer() {
     const currentTime = Date.now();
     const targetTime = new Date(refs.timePicker.value).getTime();
     const diff = targetTime - currentTime;
+
     render(convertMs(diff));
+
     if (diff <= 0) {
       clearInterval(countdown);
+      render({ days: 0, hours: 0, minutes: 0, seconds: 0 });
       return;
     }
   }, 1000);
